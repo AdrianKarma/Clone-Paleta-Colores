@@ -5,6 +5,11 @@ import ItemColor from "./ItemColor";
 const FormularioColor = () => {
 const [color, setColor]= useState('');
 const [colores, setColores]= useState([]);
+
+const borrarColor = (nombreColor)=>{
+    const coloresFiltrados =colores.filter((color)=> color!== nombreColor);
+    setColores(coloresFiltrados);
+}
 const handleSubmit = (e)=> {
     e.preventDefault()
     setColores([...colores, color])
@@ -19,7 +24,7 @@ const handleSubmit = (e)=> {
           className="mb-3 d-flex"
           controlId="exampleForm.ControlInput1"
         >
-          <Form.Label className="">Ingresa tus Tareas:</Form.Label>
+          <Form.Label className="">Ingresa un color:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: Blue "
@@ -30,11 +35,11 @@ const handleSubmit = (e)=> {
            
           />
           <Button className="mx-3" type="submit" variant="success">
-            Enviar
+            Agregar
           </Button>
         </Form.Group>
       </Form>
-    <ItemColor colores={colores}></ItemColor>
+    <ItemColor colores={colores} borrarColor={borrarColor}></ItemColor>
 
         </section>
     );
