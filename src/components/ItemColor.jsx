@@ -1,10 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const ItemColor = () => {
+const ItemColor = (props) => {
     return (
         <div>
-            <Card style={{ width: '18rem' }}>
+            {props.colores.map((elemenoColor, posicionColor)=>
+            <Card className='' key={posicionColor} style={{ width: '18rem' }}>
             <Card.Title>Card Title</Card.Title>
       <Card.Body>
        
@@ -16,6 +17,7 @@ const ItemColor = () => {
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
+    )}
         </div>
     );
 };
