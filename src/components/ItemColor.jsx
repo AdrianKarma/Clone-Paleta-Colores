@@ -3,18 +3,16 @@ import Card from 'react-bootstrap/Card';
 
 const ItemColor = (props) => {
     return (
-        <div>
-            {props.colores.map((elemenoColor, posicionColor)=>
-            <Card className='' key={posicionColor} style={{ width: '18rem' }}>
-            <Card.Title>Card Title</Card.Title>
-      <Card.Body>
+        <div className='d-flex flex-wrap justify-content-start'>
+            {props.colores.map((elementoColor, posicionColor)=>
+            <Card className=''  key={posicionColor} style={{ width: '18rem' }}>
+            <Card.Title className='text-center mt-2'>{elementoColor}</Card.Title>
+           
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+            <div className="" style={{ backgroundColor: elementoColor, width: '100px', height: '100px', margin: '10px 0' }}></div>
        
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <div className='border red'></div>
-        <Button variant="primary">Go somewhere</Button>
+     
+        <Button className="ml-auto" variant="danger">Go somewhere</Button>
       </Card.Body>
     </Card>
     )}
