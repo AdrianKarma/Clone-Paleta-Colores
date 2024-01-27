@@ -1,10 +1,18 @@
 import { Button, Form } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemColor from "./ItemColor";
 
 const FormularioColor = () => {
 const [color, setColor]= useState('');
-const [colores, setColores]= useState([]);
+const coloresLocalStorage = JSON.parse(localStorage.getItem('listaColores')) || []
+const [colores, setColores]= useState(coloresLocalStorage);
+
+useEffect(
+    ()=> {
+        console.log('testeando');
+        localStorage.setItem('listaColores', JSON.stringify(colores))
+    },[colores]
+)
 
 const borrarColor = (nombreColor)=>{
     const coloresFiltrados =colores.filter((color)=> color!== nombreColor);
@@ -22,7 +30,7 @@ const handleSubmit = (e)=> {
 <Form  onSubmit={handleSubmit}>
         <Form.Group
           className="mb-3 d-flex"
-          controlId="exampleForm.ControlInput1"
+          controlId="FormularioColor"
         >
           <Form.Label className="">Ingresa un color:</Form.Label>
           <Form.Control
